@@ -1,0 +1,32 @@
+.button {
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    padding: var(--xc-spacing-2) var(--xc-spacing-3);
+
+    &:disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+}
+
+.button--primary {
+    background-color: var(--xc-light-color-surface-primary);
+    color: var(--xc-light-color-text-default-on-dark);
+
+    &:hover {
+        background-color: var(--xc-light-color-surface-primary-hovered);
+    }
+}
+
+.button--secondary {
+    background-color: var(--xc-light-color-surface-subtle);
+
+    &:hover {
+        background-color: var(--xc-light-color-surface-subtle-hovered);
+    }
+}
+
+.button--invisible {
+    visibility: hidden;
+}

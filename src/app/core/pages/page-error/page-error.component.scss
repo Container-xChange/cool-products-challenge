@@ -1,0 +1,14 @@
+:host {
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    inset: 0;
+    justify-content: center;
+    position: fixed;
+    z-index: 1000;
+}
+
+.page-error {
+    color: var(--xc-light-color-text-default-on-dark);
+    font: var(--xc-font-headline-large);
+}

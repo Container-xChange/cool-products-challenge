@@ -1,0 +1,93 @@
+@import 'utils';
+
+:root {
+    // Color
+
+    // Color - Surface
+    --xc-light-color-surface-default: #ffffff;
+    --xc-light-color-surface-subtle: #dddddd;
+    --xc-light-color-surface-subtle-hovered: #bbbbbb;
+    --xc-light-color-surface-primary: #007bff;
+    --xc-light-color-surface-primary-hovered: #0062cc;
+    --xc-light-color-surface-danger-default: #ffebe9;
+
+    // Color - Text
+    --xc-light-color-text-default: #3e5656;
+    --xc-light-color-text-default-on-dark: #ffffff;
+    --xc-light-color-text-headlines: #282828;
+    --xc-light-color-text-subtle: #595959;
+    --xc-light-color-text-placeholder: #9F9F9F;
+    --xc-light-color-text-disabled: #acacac;
+    --xc-light-color-text-danger: #cc372c;
+
+    // Color - Border
+    --xc-light-color-border-default: #b8c9cf;
+    --xc-light-color-border-subtle: #dae3e6;
+    --xc-light-color-border-danger: #fc948d;
+
+    // Color - Shadow
+    --xc-card-box-shadow: 0 15px 6px rgba(0, 0, 0, 0.01), 0 8px 5px rgba(0, 0, 0, 0.05), 0 4px 4px rgba(0, 0, 0, 0.09),
+    0 1px 2px rgba(0, 0, 0, 0.1), 0 0 0 rgba(0, 0, 0, 0.1);
+
+    // Font
+    --xc-font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Fira Sans, Droid Sans,
+    Helvetica Neue, sans-serif;
+
+    --xc-font-line-height-1: #{rem(16px)};
+    --xc-font-line-height-2: #{rem(20px)};
+    --xc-font-line-height-3: #{rem(24px)};
+    --xc-font-line-height-4: #{rem(28px)};
+    --xc-font-line-height-5: #{rem(32px)};
+    --xc-font-line-height-6: #{rem(36px)};
+    --xc-font-line-height-7: #{rem(40px)};
+    --xc-font-line-height-8: #{rem(48px)};
+    --xc-font-line-height-9: #{rem(56px)};
+    --xc-font-line-height-10: #{rem(64px)};
+    --xc-font-line-height-11: #{rem(72px)};
+
+    --xc-font-size-100: #{rem(12px)};
+    --xc-font-size-200: #{rem(14px)};
+    --xc-font-size-300: #{rem(16px)};
+    --xc-font-size-400: #{rem(20px)};
+    --xc-font-size-500: #{rem(24px)};
+    --xc-font-size-600: #{rem(28px)};
+    --xc-font-size-700: #{rem(32px)};
+    --xc-font-size-800: #{rem(40px)};
+    --xc-font-size-900: #{rem(48px)};
+    --xc-font-size-1000: #{rem(56px)};
+    --xc-font-size-1100: #{rem(64px)};
+
+    --xc-font-weight-light: 300;
+    --xc-font-weight-regular: 400;
+    --xc-font-weight-medium: 500;
+    --xc-font-weight-semibold: 600;
+    --xc-font-weight-bold: 700;
+
+    // Font - Headlines
+    --xc-font-headline-large: var(--xc-font-weight-medium) var(--xc-font-size-500) / var(--xc-font-line-height-5) var(--xc-font-family);
+    --xc-font-headline-medium: var(--xc-font-weight-medium) var(--xc-font-size-400) / var(--xc-font-line-height-4) var(--xc-font-family);
+
+    // Font - Body
+    --xc-font-body-large: var(--xc-font-weight-regular) var(--xc-font-size-300) / var(--xc-font-line-height-3) var(--xc-font-family);
+    --xc-font-body-medium: var(--xc-font-weight-regular) var(--xc-font-size-200) / var(--xc-font-line-height-2) var(--xc-font-family);
+
+    // Font - Label
+    --xc-font-label-large: var(--xc-font-weight-regular) var(--xc-font-size-300) / var(--xc-font-line-height-3) var(--xc-font-family);
+    --xc-font-label-large-bold: var(--xc-font-weight-semibold) var(--xc-font-size-300) / var(--xc-font-line-height-3) var(--xc-font-family);
+    --xc-font-label-medium: var(--xc-font-weight-regular) var(--xc-font-size-200) / var(--xc-font-line-height-2) var(--xc-font-family);
+    --xc-font-label-medium-bold: var(--xc-font-weight-regular) var(--xc-font-size-200) / var(--xc-font-line-height-3) var(--xc-font-family);
+
+    // Spacings
+    --xc-spacing-1: 4px;
+    --xc-spacing-2: 8px;
+    --xc-spacing-3: 12px;
+    --xc-spacing-4: 16px;
+    --xc-spacing-5: 20px;
+    --xc-spacing-6: 24px;
+    --xc-spacing-7: 32px;
+    --xc-spacing-8: 40px;
+    --xc-spacing-9: 48px;
+    --xc-spacing-10: 64px;
+    --xc-spacing-11: 88px;
+    --xc-spacing-12: 96px;
+}

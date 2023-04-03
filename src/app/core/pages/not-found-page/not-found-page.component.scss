@@ -1,0 +1,27 @@
+main {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    min-height: 100svh;
+    width: 100vw;
+}
+
+.container {
+    text-align: center;
+
+    p {
+        color: var(--xc-light-color-text-headlines);
+        font: var(--xc-font-headline-large);
+        margin-bottom: var(--xc-spacing-6);
+    }
+
+    a {
+        color: var(--xc-light-color-text-default);
+        font: var(--xc-font-label-large);
+
+        &:hover {
+            opacity: 0.75;
+        }
+    }
+}
