@@ -1,0 +1,8 @@
+<div class="range__input-number-container">
+    <label for="count-range">Total items:</label>
+    <input id="count-range" type="number" [value]="value" (change)="change($event)"
+           [min]="minCount" [max]="maxCount" [disabled]="disabled" class="range__input-number" />
+</div>
+<input type="range" [value]="value" (change)="change($event)"
+       [min]="minCount" [max]="maxCount" [disabled]="disabled" class="range__input-range" />
+<button (click)="reset()">Reset</button>

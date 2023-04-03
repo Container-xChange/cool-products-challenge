@@ -1,1 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'src/app/styles/breakpoint';
+@import 'src/app/styles/container';
+@import 'src/app/styles/reset';
+@import 'src/app/styles/var';
+@import 'src/app/styles/utils';

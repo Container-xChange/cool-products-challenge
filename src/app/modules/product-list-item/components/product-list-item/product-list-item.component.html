@@ -1,0 +1,18 @@
+<article class="product-item">
+    <img [src]="product.image" alt="product-image" class="product-item__image"/>
+    <div class="product-item__content">
+        <span class="product-item__title">{{ product.title }}</span>
+        <span class="product-item__subtitle">{{ product.category }}</span>
+        <hr/>
+        <p class="product-item__description">{{ product.description }}</p>
+        <hr/>
+        <div class="product-item__footer">
+            <div *ngIf="product.rating as rating" class="product-item__rating">
+                <img src="assets/star.svg" alt="star" class="product-item__rating__star"/>
+                <span class="product-item__rating__rate">{{rating.rate}}</span>
+                <span class="product-item__rating__count">({{rating.count}})</span>
+            </div>
+            <span class="product-item__price">{{ product.price | currency:'EUR' }}</span>
+        </div>
+    </div>
+</article>
