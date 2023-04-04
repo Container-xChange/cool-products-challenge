@@ -1,0 +1,4 @@
+<div class="form-group" *ngIf="{ allow: permissionService.allow$ | async } as state">
+    <label for="allow-rating">Allow rating?</label>
+    <input type="checkbox" id="allow-rating" [ngModel]="state.allow" (ngModelChange)="permissionService.update($event)">
+</div>

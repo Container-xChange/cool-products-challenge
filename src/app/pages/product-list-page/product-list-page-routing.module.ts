@@ -5,7 +5,23 @@ import { ProductListPageComponent } from './components/product-list-page/product
 const routes: Routes = [
     {
         path: '',
-        component: ProductListPageComponent
+        component: ProductListPageComponent,
+        children: [
+            {
+                path: 'api',
+                loadChildren: () => import('../product-api-list-page/product-api-list-page.module')
+                    .then((m) => m.ProductApiListPageModule)
+            },
+            {
+                path: 'manual',
+                loadChildren: () => import('../product-manual-list-page/product-manual-list-page.module')
+                    .then((m) => m.ProductManualListPageModule)
+            },
+            {
+                path: '**',
+                redirectTo: 'api'
+            }
+        ]
     }
 ];
 

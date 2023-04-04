@@ -1,0 +1,9 @@
+<main *ngIf="!(permissionService.allow$ | async)">
+    <div class="container">
+        <p>Access denied! Please enable ratings...</p>
+        <div class="container__actions">
+            <button class="button button--primary" (click)="permissionService.update(true)">Enable</button>
+            <a routerLink="/" replaceUrl="true">Home</a>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,68 @@
+@import "src/styles";
+
+:host {
+    display: block;
+    container: host / inline-size;
+}
+
+.manual-list__item {
+    position: relative;
+
+    &:hover {
+        .manual-list__item-actions {
+            opacity: 1;
+            transition: opacity 200ms ease-out;
+        }
+    }
+}
+
+.manual-list__item-actions {
+    align-items: center;
+    display: flex;
+    inset: 0;
+    justify-content: space-around;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+
+.manual-list__item-action {
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    font: var(--xc-font-headline-large);
+    height: 50px;
+    justify-content: center;
+    text-decoration: none;
+    width: 50px;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+.manual-list__add-button {
+    cursor: pointer;
+    place-self: center;
+    min-height: 354px;
+
+    &:hover {
+        opacity: 0.75;
+    }
+}
+
+section {
+    display: grid;
+    gap: var(--xc-spacing-6);
+}
+
+
+@container host (width > #{$xc-breakpoint-md}) {
+    section {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--xc-spacing-8);
+    }
+}

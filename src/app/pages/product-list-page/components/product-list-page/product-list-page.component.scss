@@ -1,0 +1,11 @@
+.container {
+    display: grid;
+    padding-bottom: var(--xc-spacing-6);
+    padding-top: var(--xc-spacing-6);
+    gap: var(--xc-spacing-4);
+
+    main {
+        display: grid;
+        gap: var(--xc-spacing-8);
+    }
+}

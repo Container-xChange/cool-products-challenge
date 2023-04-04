@@ -1,0 +1,30 @@
+<ng-container *ngIf="productsResource$ | async as products">
+    <ng-container *ngIf="products.isLoading; else checkErrorContainer">
+        <xc-page-loader *cdkPortal="'body'"></xc-page-loader>
+    </ng-container>
+    <ng-template #checkErrorContainer>
+        <ng-container *ngIf="products.hasError; else productsListContainer">
+            <xc-page-error *cdkPortal="'body'"></xc-page-error>
+        </ng-container>
+    </ng-template>
+    <ng-template #productsListContainer>
+        <section>
+            <div class="manual-list__item" *ngFor="let product of products.data; trackBy: trackBy">
+                <xc-product-list-item [product]="product"></xc-product-list-item>
+                <div class="manual-list__item-actions">
+                    <span class="manual-list__item-action" (click)="deleteProduct(product.id)">🗑️</span>
+                    <a class="manual-list__item-action" [routerLink]="[product.id]" [relativeTo]="route"
+                       *ngIf="ratePermissionService.allow$ | async">⭐️</a>
+                </div>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="60.249" height="62.184" viewBox="0 0 60.249 62.184"
+                 class="manual-list__add-button" role="button" (click)="addProduct()">
+                <g id="Group_43" data-name="Group 43" transform="translate(2.5 2.5)">
+                    <line id="Line_1" data-name="Line 1" y2="57.184" transform="translate(27.624)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="5"/>
+                    <line id="Line_2" data-name="Line 2" y2="55.249" transform="translate(55.249 28.592) rotate(90)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="5"/>
+                </g>
+            </svg>
+        </section>
+    </ng-template>
+</ng-container>
+

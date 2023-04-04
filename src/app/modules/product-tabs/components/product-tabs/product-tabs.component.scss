@@ -1,0 +1,28 @@
+.nav-pills {
+    display: inline-flex;
+    gap: var(--xc-spacing-4);
+    margin-bottom: var(--xc-spacing-4);
+}
+
+.nav-link {
+    align-items: center;
+    background: var(--xc-light-color-surface-default);
+    border-radius: 12px;
+    color: var(--xc-light-color-text-headlines);
+    cursor: pointer;
+    display: inline-flex;
+    font: var(--xc-font-label-medium);
+    height: 48px;
+    justify-content: center;
+    text-decoration: none;
+    width: 200px;
+
+    &:not(.nav-link--active):hover {
+        background-color: var(--xc-light-color-surface-subtle);
+    }
+}
+
+.nav-link--active {
+    background: var(--xc-light-color-surface-primary);
+    color: var(--xc-light-color-text-default-on-dark);
+}

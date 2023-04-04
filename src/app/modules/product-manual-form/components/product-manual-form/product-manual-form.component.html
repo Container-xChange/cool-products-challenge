@@ -1,0 +1,35 @@
+<ng-container [formGroup]="form">
+    <div class="form-group" [class.form-group--invalid]="form.controls.title.dirty && form.controls.title.invalid">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" formControlName="title" autofocus #titleInput>
+    </div>
+    <div class="form-group" [class.form-group--invalid]="form.controls.category.dirty && form.controls.category.invalid">
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category" formControlName="category">
+    </div>
+    <div class="form-group form-group--vertical manual-form--row" [class.form-group--invalid]="form.controls.description.dirty && form.controls.description.invalid">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" formControlName="description"></textarea>
+    </div>
+    <div class="form-group manual-form--row" [class.form-group--invalid]="form.controls.imageUrl.dirty && form.controls.imageUrl.invalid">
+        <label for="image">Image URL:</label>
+        <input type="text" id="image" name="image" formControlName="imageUrl">
+    </div>
+    <div class="manual-form__image-preview manual-form--row">
+        <img [src]="(imagePreviewUrl$ | async) || 'assets/preview-placeholder.jpeg'" alt="image-preview"/>
+    </div>
+    <div class="form-group">
+        <div class="form-group" [class.form-group--invalid]="form.controls.rating.dirty && form.controls.rating.invalid">
+            <label for="rating">Rating:</label>
+            <input type="number" id="rating" name="rating" formControlName="rating">
+        </div>
+        <div class="form-group" [class.form-group--invalid]="form.controls.ratingCount.dirty && form.controls.ratingCount.invalid">
+            <label for="rating-count">Count:</label>
+            <input type="number" id="rating-count" name="rating-count" formControlName="ratingCount">
+        </div>
+    </div>
+    <div class="form-group" [class.form-group--invalid]="form.controls.price.dirty && form.controls.price.invalid">
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" formControlName="price">
+    </div>
+</ng-container>

@@ -1,0 +1,19 @@
+@import "src/styles";
+
+:host {
+    display: block;
+    container: host / inline-size;
+}
+
+section {
+    display: grid;
+    gap: var(--xc-spacing-6);
+}
+
+
+@container host (width > #{$xc-breakpoint-md}) {
+    section {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--xc-spacing-8);
+    }
+}

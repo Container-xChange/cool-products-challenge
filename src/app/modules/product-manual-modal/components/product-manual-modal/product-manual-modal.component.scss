@@ -1,0 +1,47 @@
+:host {
+    background-color: var(--xc-light-color-surface-default);
+    border: 1px solid var(--xc-light-color-border-default);
+    border-radius: 8px;
+    box-shadow: var(--xc-card-box-shadow);
+    display: grid;
+    grid-template-rows: auto 1fr;
+    height: 100%;
+    justify-items: center;
+    padding: var(--xc-spacing-6) var(--xc-spacing-8);
+}
+
+.modal__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .modal__title {
+        color: var(--xc-light-color-text-headlines);
+        font: var(--xc-font-headline-large);
+    }
+
+    .modal__close {
+        cursor: pointer;
+    }
+}
+
+.modal__body {
+    width: 100%;
+    max-width: 600px;
+    margin: var(--xc-spacing-4);
+    overflow-y: auto;
+}
+
+.modal__footer {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    padding: var(--xc-spacing-8) var(--xc-spacing-3) var(--xc-spacing-3);
+    gap: var(--xc-spacing-2);
+    width: 100%;
+}
+
+.modal__cancel {
+    margin-left: auto;
+}

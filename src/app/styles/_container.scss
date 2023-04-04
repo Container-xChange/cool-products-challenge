@@ -1,0 +1,38 @@
+@import 'src/app/styles/breakpoint';
+
+.container {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: $xc-breakpoint-sm;
+    padding: var(--xc-spacing-4);
+    width: 100%;
+
+    @media (width > $xc-breakpoint-sm) {
+        padding-left: var(--xc-spacing-6);
+        padding-right: var(--xc-spacing-6);
+        max-width: $xc-breakpoint-md;
+    }
+
+    @media (width > $xc-breakpoint-md) {
+        padding-left: var(--xc-spacing-9);
+        padding-right: var(--xc-spacing-9);
+        max-width: $xc-breakpoint-lg;
+    }
+
+    @media (width > $xc-breakpoint-lg) {
+        padding-left: var(--xc-spacing-12);
+        padding-right: var(--xc-spacing-12);
+        max-width: $xc-breakpoint-xl;
+    }
+
+    @media (width > $xc-breakpoint-xl) {
+        padding-left: var(--xc-spacing-9);
+        padding-right: var(--xc-spacing-9);
+    }
+
+    @media (width > ($xc-breakpoint-xl + 96)) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

@@ -1,0 +1,19 @@
+:host {
+    display: contents;
+}
+
+.form-group {
+    align-items: center;
+    display: inline-flex;
+    text-align: center;
+
+    label {
+        font: var(--xc-font-label-large);
+    }
+
+    input {
+        font: var(--xc-font-label-large-bold);
+        text-align: center;
+        width: 50px;
+    }
+}

@@ -4,6 +4,9 @@ export default {
     setupFilesAfterEnv: ['./src/test-setup.ts'],
     testEnvironment: 'jsdom',
     coverageDirectory: './coverage',
+    moduleNameMapper: {
+        '@xc(.*)': '<rootDir>/src/app/$1'
+    },
     globals: {
         'ts-jest': {
             tsconfig: './tsconfig.spec.json',

@@ -1,0 +1,15 @@
+<ng-container *ngIf="productsResource$ | async as products">
+    <ng-container *ngIf="products.isLoading; else checkErrorContainer">
+        <xc-page-loader *cdkPortal="'body'"></xc-page-loader>
+    </ng-container>
+    <ng-template #checkErrorContainer>
+        <ng-container *ngIf="products.hasError; else productsListContainer">
+            <xc-page-error *cdkPortal="'body'"></xc-page-error>
+        </ng-container>
+    </ng-template>
+    <ng-template #productsListContainer>
+        <section>
+            <xc-product-list-item *ngFor="let product of products.data" [product]="product"></xc-product-list-item>
+        </section>
+    </ng-template>
+</ng-container>

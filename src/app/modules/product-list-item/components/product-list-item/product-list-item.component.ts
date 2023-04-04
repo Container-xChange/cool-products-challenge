@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ProductItem } from '@xc/core/interfaces/product-item.interface';
 
 @Component({
     selector: 'xc-product-list-item',
@@ -7,4 +8,5 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductListItemComponent {
+    @Input() product!: ProductItem;
 }

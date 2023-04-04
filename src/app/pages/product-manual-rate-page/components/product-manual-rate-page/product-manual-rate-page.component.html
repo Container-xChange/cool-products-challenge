@@ -1,0 +1,6 @@
+<main *ngIf="product$ | async as product">
+    <div class="container">
+        <xc-product-rate-form [product]="product" (productChange)="update($event)"></xc-product-rate-form>
+        <xc-product-list-item [product]="product"></xc-product-list-item>
+    </div>
+</main>
