@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductListPageComponent } from './product-list-page.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('ProductListPageComponent', () => {
     let component: ProductListPageComponent;
@@ -10,7 +11,8 @@ describe('ProductListPageComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             declarations: [ProductListPageComponent],
-            imports: [RouterTestingModule]
+            imports: [RouterTestingModule],
+            schemas: [NO_ERRORS_SCHEMA]
         })
             .compileComponents();
 
