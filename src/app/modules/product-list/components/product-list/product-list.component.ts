@@ -3,7 +3,6 @@ import { BehaviorSubject, catchError, map, Observable, of, shareReplay, startWit
 import { ProductItem } from '@xc/core/interfaces/product-item.interface';
 import { loadedResourceError, loadedResourceSuccess, loadResource, Resource } from '@xc/core/interfaces/resource.interface';
 import { ProductsService } from '@xc/core/services/products.service';
-import { environment } from '../../../../../environments/environment';
 
 @Component({
     selector: 'xc-product-list',
@@ -13,7 +12,7 @@ import { environment } from '../../../../../environments/environment';
 })
 export class ProductListComponent implements OnInit, OnChanges {
 
-    @Input() count = environment.DEFAULT_PRODUCTS_COUNT;
+    @Input() count!: number;
 
     productsResource$!: Observable<Resource<ProductItem[]>>;
 

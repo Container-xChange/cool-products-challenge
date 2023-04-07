@@ -6,11 +6,13 @@ import { ProductListModule } from '@xc/modules/product-list/product-list.module'
 import { ProductListSettingsModule } from '@xc/modules/product-list-settings/product-list-settings.module';
 import { ProductsService } from '@xc/core/services/products.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [ProductListPageComponent],
     imports: [
         CommonModule,
+        FormsModule,
         HttpClientModule,
         ProductListModule,
         ProductListPageRoutingModule,

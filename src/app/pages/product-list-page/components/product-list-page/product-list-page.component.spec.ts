@@ -3,6 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProductListPageComponent } from './product-list-page.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { ProductListSettingsModule } from '@xc/modules/product-list-settings/product-list-settings.module';
 
 describe('ProductListPageComponent', () => {
     let component: ProductListPageComponent;
@@ -11,7 +13,7 @@ describe('ProductListPageComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             declarations: [ProductListPageComponent],
-            imports: [RouterTestingModule],
+            imports: [FormsModule, RouterTestingModule, ProductListSettingsModule],
             schemas: [NO_ERRORS_SCHEMA]
         })
             .compileComponents();
