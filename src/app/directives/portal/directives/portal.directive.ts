@@ -2,6 +2,7 @@ import { AfterContentInit, ApplicationRef, ComponentFactoryResolver, Directive, 
 import { CdkPortal, DomPortalOutlet } from '@angular/cdk/portal';
 
 @Directive({
+    // eslint-disable-next-line @angular-eslint/directive-selector
     selector: '[cdkPortal]'
 })
 export class PortalDirective implements AfterContentInit, OnDestroy {
