@@ -1,21 +1,28 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, TestBed } from '@angular/core/testing';
 
 import { ProductListComponent } from './product-list.component';
 import { ProductsService } from '@xc/core/services/products.service';
-import { EMPTY, first, of, throwError } from 'rxjs';
+import { EMPTY, of, throwError } from 'rxjs';
 import { productItemsMock } from '@xc/test/mocks/product-list.mock';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ServiceMock, serviceMockInject } from '@xc/test/utils/service-mock.util';
 import { PortalModule } from '@xc/directives/portal/portal.module';
 
+@Component({
+    template: `<xc-product-list [count]="count"></xc-product-list>`
+})
+class ProductListTestComponent {
+    count!: number;
+}
+
 describe('ProductListComponent', () => {
-    let component: ProductListComponent;
-    let fixture: ComponentFixture<ProductListComponent>;
+    let component: ProductListTestComponent;
+    let fixture: ComponentFixture<ProductListTestComponent>;
     let productsService: ServiceMock<ProductsService>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [ProductListComponent],
+            declarations: [ProductListTestComponent, ProductListComponent],
             imports: [PortalModule],
             providers: [
                 {
@@ -29,10 +36,16 @@ describe('ProductListComponent', () => {
         })
             .compileComponents();
 
-        fixture = TestBed.createComponent(ProductListComponent);
+        fixture = TestBed.createComponent(ProductListTestComponent);
         component = fixture.componentInstance;
         productsService = serviceMockInject(ProductsService);
+
+        productsService.fetchProducts$.mockReturnValue(EMPTY);
     });
+
+    afterEach(() => {
+        productsService.fetchProducts$.mockClear();
+    })
 
     it('should create', () => {
         fixture.detectChanges();
@@ -40,99 +53,46 @@ describe('ProductListComponent', () => {
     });
 
     it('should fetch product resources on init', () => {
-        const prevCount = 10;
         const curCount = 20;
         component.count = curCount;
         fixture.detectChanges();
-        component.ngOnChanges({
-            count: {
-                currentValue: curCount,
-                previousValue: prevCount,
-                firstChange: false,
-                isFirstChange: () => false
-            }
-        });
         expect(productsService.fetchProducts$).toHaveBeenCalledWith(curCount);
     });
 
     it('should fetch product resources when count changes', () => {
-        const prevCount = 10;
-        component.count = prevCount;
+        component.count = 10;
         fixture.detectChanges();
         productsService.fetchProducts$.mockReset();
 
         const curCount = 20;
         component.count = curCount;
-        component.ngOnChanges({
-            count: {
-                currentValue: curCount,
-                previousValue: prevCount,
-                firstChange: false,
-                isFirstChange: () => false
-            }
-        });
+        fixture.detectChanges();
         expect(productsService.fetchProducts$).toHaveBeenCalledWith(curCount);
     });
 
-    it('should be in a loading state while fetching the product resources', (done) => {
-        productsService.fetchProducts$.mockReturnValue(EMPTY);
+    it('should be in a loading state while fetching the product resources', fakeAsync( () => {
         fixture.detectChanges();
-        component.productsResource$.pipe(first())
-            .subscribe((productResources) => {
-                expect(productResources).toEqual({
-                    isLoading: true,
-                    isLoaded: false,
-                    hasError: false,
-                    data: null
-                });
-                done();
-            });
-    });
+        flush();
+        expect(document.querySelector('xc-page-loader')).toBeTruthy();
+        expect(document.querySelector('xc-page-error')).toBeFalsy();
+        expect(fixture.nativeElement.querySelectorAll('xc-product-list-item').length).toBe(0);
+    }));
 
-    it('should be in an error state when failed to fetch the product resources', (done) => {
+    it('should be in an error state when failed to fetch the product resources', fakeAsync(() => {
         productsService.fetchProducts$.mockReturnValue(throwError({ status: 0 }));
         fixture.detectChanges();
-        component.productsResource$.pipe(first())
-            .subscribe((productResources) => {
-                expect(productResources).toEqual({
-                    isLoading: false,
-                    isLoaded: true,
-                    hasError: true,
-                    data: null
-                });
-                done();
-            });
-    });
+        flush();
+        expect(document.querySelector('xc-page-error')).toBeTruthy();
+        expect(document.querySelector('xc-page-loader')).toBeFalsy();
+        expect(fixture.nativeElement.querySelectorAll('xc-product-list-item').length).toBe(0);
+    }));
 
-    it('should display product items when product resources are loaded with success', (done) => {
+    it('should display product items when product resources are loaded with success', fakeAsync(() => {
         productsService.fetchProducts$.mockReturnValue(of(productItemsMock()));
         fixture.detectChanges();
-        component.productsResource$.pipe(first())
-            .subscribe((productResources) => {
-                expect(fixture.nativeElement.querySelectorAll('xc-product-list-item').length).toBe(productItemsMock().length);
-                done();
-            });
-    });
-
-    it('should display a loader when product resources are loading', (done) => {
-        productsService.fetchProducts$.mockReturnValue(EMPTY);
-        fixture.detectChanges();
-        component.productsResource$.pipe(first())
-            .subscribe((productResources) => {
-                expect(document.querySelector('body > xc-page-loader')).toBeTruthy();
-                expect(fixture.nativeElement.querySelectorAll('xc-product-list-item').length).toBe(0);
-                done();
-            });
-    });
-
-    it('should display an error when product resources failed to load', (done) => {
-        productsService.fetchProducts$.mockReturnValue(throwError({ status: 0 }));
-        fixture.detectChanges();
-        component.productsResource$.pipe(first())
-            .subscribe((productResources) => {
-                expect(document.querySelector('body > xc-page-error')).toBeTruthy();
-                expect(fixture.nativeElement.querySelectorAll('xc-product-list-item').length).toBe(0);
-                done();
-            });
-    });
+        flush();
+        expect(document.querySelector('xc-page-loader')).toBeFalsy();
+        expect(document.querySelector('xc-page-error')).toBeFalsy();
+        expect(fixture.nativeElement.querySelectorAll('xc-product-list-item').length).toBe(productItemsMock().length);
+    }));
 });
