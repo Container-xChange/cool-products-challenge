@@ -1,8 +1,10 @@
-<header>
-    <xc-product-list-settings class="container"></xc-product-list-settings>
-<!--    <button class="button button&#45;&#45;primary" (click)="addProduct()">Add Product</button>-->
+<header class="container">
+    <button class="button button--outline" (click)="addProduct()">Add Product</button>
+    <xc-product-list-settings [minCount]="5" [maxCount]="10"></xc-product-list-settings>
 </header>
-<main>
-    <xc-product-list class="container"></xc-product-list>
+<main class="container">
+    <xc-product-list></xc-product-list>
 </main>
+
+<!--Adds a loading state globally:-->
 <!--<xc-page-loader *cdkPortal="'body'"></xc-page-loader>-->

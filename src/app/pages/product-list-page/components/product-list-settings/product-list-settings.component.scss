@@ -1,0 +1,35 @@
+:host {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--xc-spacing-6);
+}
+
+.range__input-number-container {
+    align-items: center;
+    display: inline-flex;
+    gap: var(--xc-spacing-4);
+}
+
+.range__input-number {
+    border: 0;
+    border-bottom: 1px solid var(--xc-light-color-border-subtle);
+    text-align: center;
+    width: 32px;
+}
+
+.range__input-range {
+    align-items: center;
+    display: flex;
+    position: relative;
+    isolation: isolate;
+
+    &::before {
+        content: '';
+        background-color: var(--xc-light-color-border-subtle);
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        z-index: -1;
+    }
+}

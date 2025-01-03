@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductManualFormComponent } from './product-manual-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProductManualFormService } from './services/product-manual-form.service';
 
 describe('ProductManualFormComponent', () => {
     let component: ProductManualFormComponent;
@@ -13,7 +14,8 @@ describe('ProductManualFormComponent', () => {
                 FormsModule,
                 ReactiveFormsModule,
                 ProductManualFormComponent
-            ]
+            ],
+            providers: [ProductManualFormService]
         })
             .compileComponents();
 

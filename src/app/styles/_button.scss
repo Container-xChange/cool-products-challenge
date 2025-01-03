@@ -21,9 +21,21 @@
 
 .button--secondary {
     background-color: var(--xc-light-color-surface-subtle);
+    color: var(--xc-light-color-text-default);
 
     &:hover {
         background-color: var(--xc-light-color-surface-subtle-hovered);
+    }
+}
+
+.button--outline {
+    background-color: transparent;
+    border: 1px solid var(--xc-light-color-border-default);
+    color: var(--xc-light-color-text-default);
+
+    &:hover {
+        color: var(--xc-light-color-text-default-on-dark);
+        background-color: var(--xc-light-color-surface-primary-hovered);
     }
 }
 

@@ -1,0 +1,35 @@
+<ng-container>
+    <div class="form-group" [class.form-group--invalid]="form.controls.title.dirty && form.controls.title.invalid">
+        <label for="title">Title:</label>
+        <input id="title" name="title" autofocus>
+    </div>
+    <div class="form-group" [class.form-group--invalid]="form.controls.category.dirty && form.controls.category.invalid">
+        <label for="category">Category:</label>
+        <input id="category" name="category">
+    </div>
+    <div class="form-group form-group--vertical manual-form--row" [class.form-group--invalid]="form.controls.description.dirty && form.controls.description.invalid">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description"></textarea>
+    </div>
+    <div class="form-group manual-form--row" [class.form-group--invalid]="form.controls.imageUrl.dirty && form.controls.imageUrl.invalid">
+        <label for="image">Image URL:</label>
+        <input id="image" name="image">
+    </div>
+    <div class="manual-form__image-preview manual-form--row">
+        <img [ngSrc]="'assets/preview-placeholder.jpeg'" alt="image-preview" width="250" height="250"/>
+    </div>
+    <div class="form-group">
+        <div class="form-group" [class.form-group--invalid]="form.controls.rating.dirty && form.controls.rating.invalid">
+            <label for="rating">Rating:</label>
+            <input id="rating" name="rating">
+        </div>
+        <div class="form-group" [class.form-group--invalid]="form.controls.ratingCount.dirty && form.controls.ratingCount.invalid">
+            <label for="rating-count">Count:</label>
+            <input id="rating-count" name="rating-count">
+        </div>
+    </div>
+    <div class="form-group" [class.form-group--invalid]="form.controls.price.dirty && form.controls.price.invalid">
+        <label for="price">Price:</label>
+        <input id="price" name="price">
+    </div>
+</ng-container>

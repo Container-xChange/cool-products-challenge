@@ -4,11 +4,10 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { PageLoaderComponent } from '../../core/pages/page-loader/page-loader.component';
 import { PortalDirective } from '../../core/directives/portal.directive';
 import { CdkPortal } from '@angular/cdk/portal';
-import { ProductsManualService } from '../../core/services/products-manual.service';
 import { ProductManualModalUiService } from './modules/product-manual-modal/services/product-manual-modal-ui.service';
-import { map, switchMap } from 'rxjs';
-import { ProductManualFormModel } from './interfaces/product-manual-form.interface';
 import { ProductManualModalModule } from './modules/product-manual-modal';
+import { ProductManualListService } from './services/product-manual-list.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'xc-product-list-page',
@@ -21,28 +20,18 @@ import { ProductManualModalModule } from './modules/product-manual-modal';
         PortalDirective,
         ProductListComponent,
         ProductListSettingsComponent,
-        ProductManualModalModule
+        ProductManualModalModule,
+        FormsModule
     ],
-    providers: [ProductManualModalUiService],
+    providers: [ProductManualListService, ProductManualModalUiService],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductListPageComponent {
-    constructor(
-        private readonly productsManualService: ProductsManualService,
-        private readonly productManualModalUiService: ProductManualModalUiService
-    ) {
+
+    constructor(private readonly manualProductListService: ProductManualListService) {
     }
 
     addProduct(): void {
-        this.productManualModalUiService.load()
-            .pipe(
-                switchMap((ref) => ref.send$),
-                map((product) => ({ id: Math.random(), product }))
-            )
-            .subscribe(({ id, product }) => this.add(id, product));
-    }
-
-    private add(id: number, product: ProductManualFormModel): void {
-        console.warn('needs implementation', this.productsManualService.add, id, product);
+        this.manualProductListService.addProduct();
     }
 }

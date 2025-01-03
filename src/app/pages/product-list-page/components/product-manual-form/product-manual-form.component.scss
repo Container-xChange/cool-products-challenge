@@ -1,0 +1,30 @@
+@import 'src/app/styles/breakpoint';
+
+:host {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--xc-spacing-5);
+
+    @media (min-width: $xc-breakpoint-sm) {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.manual-form--row {
+    grid-column: 1 / -1;
+}
+
+.manual-form--center {
+    justify-content: center;
+}
+
+.manual-form__image-preview {
+    display: flex;
+    justify-content: center;
+
+    img {
+        object-fit: contain;
+        aspect-ratio: 1 / 1;
+        height: 250px;
+    }
+}
